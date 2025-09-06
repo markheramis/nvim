@@ -111,6 +111,16 @@ export NVIM_THEME="onedark"  # Alternative
 | `<leader>o` | Normal | Toggle symbol outline |
 | `<leader>bg` | Normal | Toggle background transparency |
 
+### File & Buffer Management
+| Key | Mode | Action |
+|-----|------|--------|
+| `<leader>b` | Normal | New buffer |
+| `<leader>sn` | Normal | Save without auto-formatting |
+| `<leader>y` | Normal/Visual | Yank to system clipboard |
+| `<leader>Y` | Normal | Yank line to system clipboard |
+| `<leader>j` | Normal | Replace word under cursor |
+| `\` | Normal | Neo-tree reveal current file |
+
 ### Navigation
 | Key | Mode | Action |
 |-----|------|--------|
@@ -118,20 +128,55 @@ export NVIM_THEME="onedark"  # Alternative
 | `<C-j>` | Normal | Navigate to below split/tmux pane |
 | `<C-k>` | Normal | Navigate to above split/tmux pane |
 | `<C-l>` | Normal | Navigate to right split/tmux pane |
+| `<C-\>` | Normal | Navigate to previous tmux pane |
 | `<Tab>` | Normal | Next buffer |
 | `<S-Tab>` | Normal | Previous buffer |
 | `<leader>x` | Normal | Close buffer |
 | `<C-d/u>` | Normal | Scroll half page (centered) |
+
+### Window & Split Management
+| Key | Mode | Action |
+|-----|------|--------|
+| `<leader>v` | Normal | Split window vertically |
+| `<leader>h` | Normal | Split window horizontally |
+| `<leader>se` | Normal | Equalize split windows |
+| `<leader>xs` | Normal | Close current split |
+| `<leader>to` | Normal | Open new tab |
+| `<leader>tx` | Normal | Close current tab |
+| `<leader>tn` | Normal | Go to next tab |
+| `<leader>tp` | Normal | Go to previous tab |
+| `<Up/Down/Left/Right>` | Normal | Resize windows |
+
+### Text Editing
+| Key | Mode | Action |
+|-----|------|--------|
+| `<leader>+` | Normal | Increment number |
+| `<leader>-` | Normal | Decrement number |
+| `<leader>lw` | Normal | Toggle line wrapping |
+| `<A-j>` | Visual | Move text down |
+| `<A-k>` | Visual | Move text up |
+| `jk` / `kj` | Insert | Exit insert mode |
 
 ### LSP & Code
 | Key | Mode | Action |
 |-----|------|--------|
 | `gd` | Normal | Go to definition |
 | `gr` | Normal | Go to references |
+| `gI` | Normal | Go to implementation |
+| `gD` | Normal | Go to declaration |
 | `K` | Normal | Hover documentation |
 | `<leader>ca` | Normal | Code actions |
 | `<leader>rn` | Normal | Rename symbol |
+| `<leader>D` | Normal | Type definition |
+| `<leader>ds` | Normal | Document symbols |
+| `<leader>ws` | Normal | Workspace symbols |
+| `<leader>wa` | Normal | Add workspace folder |
+| `<leader>wr` | Normal | Remove workspace folder |
+| `<leader>wl` | Normal | List workspace folders |
 | `[d` / `]d` | Normal | Previous/next diagnostic |
+| `<leader>d` | Normal | Open floating diagnostic |
+| `<leader>q` | Normal | Open diagnostics list |
+| `<leader>do` | Normal | Toggle diagnostics |
 
 ### Git
 | Key | Mode | Action |
@@ -139,6 +184,8 @@ export NVIM_THEME="onedark"  # Alternative
 | `<leader>gs` | Normal | Git status |
 | `<leader>gc` | Normal | Git commits |
 | `<leader>gb` | Normal | Git branches |
+| `<leader>gf` | Normal | Git files |
+| `<leader>gcf` | Normal | Git commits for current file |
 | `<leader>ngs` | Normal | Neo-tree Git status |
 
 ### Sessions
@@ -153,8 +200,191 @@ export NVIM_THEME="onedark"  # Alternative
 | `<C-s>` | Normal | Save file |
 | `<C-q>` | Normal | Quit |
 | `<Esc>` | Normal | Clear search highlights |
-| `jk` / `kj` | Insert | Exit insert mode |
 | `<C-c>` | Normal/Visual | Toggle comment |
+| `<C-_>` | Normal/Visual | Toggle comment (alternative) |
+| `<C-/>` | Normal/Visual | Toggle comment (alternative) |
+
+### Advanced Search & Navigation
+| Key | Mode | Action |
+|-----|------|--------|
+| `<leader>?` | Normal | Find recently opened files |
+| `<leader>sm` | Normal | Search marks |
+| `<leader>sh` | Normal | Search help tags |
+| `<leader>sw` | Normal | Search current word |
+| `<leader>sd` | Normal | Search diagnostics |
+| `<leader>sr` | Normal | Resume last search |
+| `<leader>s.` | Normal | Search recent files |
+| `<leader>sds` | Normal | Search LSP document symbols |
+| `<leader><leader>` | Normal | Find existing buffers |
+| `<leader>s/` | Normal | Live grep in open files |
+| `<leader>/` | Normal | Fuzzy search in current buffer |
+
+### Harpoon File Navigation
+| Key | Mode | Action |
+|-----|------|--------|
+| `<leader>M` | Normal | Toggle harpoon menu |
+| `<leader>m` | Normal | Add current file to harpoon |
+| `<leader>1` | Normal | Go to harpoon file 1 |
+| `<leader>2` | Normal | Go to harpoon file 2 |
+| `<leader>3` | Normal | Go to harpoon file 3 |
+| `<leader>4` | Normal | Go to harpoon file 4 |
+| `<leader>p` | Normal | Previous harpoon file |
+| `<leader>n` | Normal | Next harpoon file |
+
+### Symbol Outline (Aerial)
+| Key | Mode | Action |
+|-----|------|--------|
+| `<leader>on` | Normal | Toggle aerial navigation |
+| `{` | Normal | Previous symbol (when aerial attached) |
+| `}` | Normal | Next symbol (when aerial attached) |
+
+### Debugging
+| Key | Mode | Action |
+|-----|------|--------|
+| `<F5>` | Normal | Start/Continue debug |
+| `<F1>` | Normal | Step into |
+| `<F2>` | Normal | Step over |
+| `<F3>` | Normal | Step out |
+| `<leader>b` | Normal | Toggle breakpoint |
+| `<leader>B` | Normal | Set conditional breakpoint |
+| `<F7>` | Normal | Toggle debug UI |
+
+### Tmux Integration
+| Key | Mode | Action | Context |
+|-----|------|--------|---------|
+| `<C-h>` | Normal | Move to left pane | Tmux + Neovim |
+| `<C-j>` | Normal | Move to below pane | Tmux + Neovim |
+| `<C-k>` | Normal | Move to above pane | Tmux + Neovim |
+| `<C-l>` | Normal | Move to right pane | Tmux + Neovim |
+| `<C-\>` | Normal | Move to previous pane | Tmux + Neovim |
+
+### Tmux Pane Management
+| Key | Mode | Action | Context |
+|-----|------|--------|---------|
+| `prefix -` | Tmux | Split window horizontally | Tmux only |
+| `prefix _` | Tmux | Split window vertically | Tmux only |
+| `prefix h` | Tmux | Move to left pane | Tmux only |
+| `prefix j` | Tmux | Move to below pane | Tmux only |
+| `prefix k` | Tmux | Move to above pane | Tmux only |
+| `prefix l` | Tmux | Move to right pane | Tmux only |
+| `prefix >` | Tmux | Swap pane with next | Tmux only |
+| `prefix <` | Tmux | Swap pane with previous | Tmux only |
+| `prefix +` | Tmux | Maximize current pane | Tmux only |
+| `prefix H` | Tmux | Resize pane left | Tmux only |
+| `prefix J` | Tmux | Resize pane down | Tmux only |
+| `prefix K` | Tmux | Resize pane up | Tmux only |
+| `prefix L` | Tmux | Resize pane right | Tmux only |
+
+### Tmux Window Management
+| Key | Mode | Action | Context |
+|-----|------|--------|---------|
+| `prefix C-c` | Tmux | Create new session | Tmux only |
+| `prefix C-f` | Tmux | Find and switch to session | Tmux only |
+| `prefix BTab` | Tmux | Switch to last session | Tmux only |
+| `prefix C-h` | Tmux | Previous window | Tmux only |
+| `prefix C-l` | Tmux | Next window | Tmux only |
+| `prefix C-S-H` | Tmux | Swap window with previous | Tmux only |
+| `prefix C-S-L` | Tmux | Swap window with next | Tmux only |
+| `prefix Tab` | Tmux | Move to last active window | Tmux only |
+| `prefix e` | Tmux | Edit tmux config | Tmux only |
+| `prefix r` | Tmux | Reload tmux config | Tmux only |
+| `prefix m` | Tmux | Toggle mouse mode | Tmux only |
+
+### Tmux Copy Mode & Buffers
+| Key | Mode | Action | Context |
+|-----|------|--------|---------|
+| `prefix Enter` | Tmux | Enter copy mode | Tmux only |
+| `v` | Copy | Begin selection | In copy mode |
+| `C-v` | Copy | Rectangle toggle | In copy mode |
+| `y` | Copy | Copy selection and cancel | In copy mode |
+| `Escape` | Copy | Cancel selection | In copy mode |
+| `H` | Copy | Start of line | In copy mode |
+| `L` | Copy | End of line | In copy mode |
+| `prefix b` | Tmux | List paste buffers | Tmux only |
+| `prefix p` | Tmux | Paste from top buffer | Tmux only |
+| `prefix P` | Tmux | Choose buffer to paste | Tmux only |
+| `prefix y` | Tmux | Copy to system clipboard | Tmux only |
+
+### Neo-tree File Explorer
+| Key | Mode | Action | Context |
+|-----|------|--------|---------|
+| `<Space>` | Normal | Toggle node | In Neo-tree |
+| `<Enter>` | Normal | Open file | In Neo-tree |
+| `<Esc>` | Normal | Cancel/Close | In Neo-tree |
+| `P` | Normal | Toggle preview | In Neo-tree |
+| `l` | Normal | Open file | In Neo-tree |
+| `S` | Normal | Open in split | In Neo-tree |
+| `s` | Normal | Open in vsplit | In Neo-tree |
+| `t` | Normal | Open in new tab | In Neo-tree |
+| `w` | Normal | Open with window picker | In Neo-tree |
+| `C` | Normal | Close node | In Neo-tree |
+| `z` | Normal | Close all nodes | In Neo-tree |
+| `a` | Normal | Add file | In Neo-tree |
+| `A` | Normal | Add directory | In Neo-tree |
+| `d` | Normal | Delete file | In Neo-tree |
+| `r` | Normal | Rename file | In Neo-tree |
+| `y` | Normal | Copy to clipboard | In Neo-tree |
+| `x` | Normal | Cut to clipboard | In Neo-tree |
+| `p` | Normal | Paste from clipboard | In Neo-tree |
+| `c` | Normal | Copy file | In Neo-tree |
+| `m` | Normal | Move file | In Neo-tree |
+| `q` | Normal | Close window | In Neo-tree |
+| `R` | Normal | Refresh | In Neo-tree |
+| `?` | Normal | Show help | In Neo-tree |
+| `<` | Normal | Previous source | In Neo-tree |
+| `>` | Normal | Next source | In Neo-tree |
+| `i` | Normal | Show file details | In Neo-tree |
+
+### Neo-tree Filesystem Navigation
+| Key | Mode | Action | Context |
+|-----|------|--------|---------|
+| `<BS>` | Normal | Navigate up | In filesystem view |
+| `.` | Normal | Set as root | In filesystem view |
+| `H` | Normal | Toggle hidden files | In filesystem view |
+| `/` | Normal | Fuzzy finder | In filesystem view |
+| `D` | Normal | Fuzzy finder directory | In filesystem view |
+| `#` | Normal | Fuzzy sorter | In filesystem view |
+| `f` | Normal | Filter on submit | In filesystem view |
+| `<C-x>` | Normal | Clear filter | In filesystem view |
+| `[g` | Normal | Previous git modified | In filesystem view |
+| `]g` | Normal | Next git modified | In filesystem view |
+| `oc` | Normal | Order by created | In filesystem view |
+| `od` | Normal | Order by diagnostics | In filesystem view |
+| `og` | Normal | Order by git status | In filesystem view |
+| `om` | Normal | Order by modified | In filesystem view |
+| `on` | Normal | Order by name | In filesystem view |
+| `os` | Normal | Order by size | In filesystem view |
+| `ot` | Normal | Order by type | In filesystem view |
+
+### Neo-tree Buffer Management
+| Key | Mode | Action | Context |
+|-----|------|--------|---------|
+| `bd` | Normal | Delete buffer | In buffer view |
+| `<BS>` | Normal | Navigate up | In buffer view |
+| `.` | Normal | Set as root | In buffer view |
+| `oc` | Normal | Order by created | In buffer view |
+| `od` | Normal | Order by diagnostics | In buffer view |
+| `om` | Normal | Order by modified | In buffer view |
+| `on` | Normal | Order by name | In buffer view |
+| `os` | Normal | Order by size | In buffer view |
+| `ot` | Normal | Order by type | In buffer view |
+
+### Neo-tree Git Status
+| Key | Mode | Action | Context |
+|-----|------|--------|---------|
+| `A` | Normal | Git add all | In git status view |
+| `gu` | Normal | Git unstage file | In git status view |
+| `ga` | Normal | Git add file | In git status view |
+| `gr` | Normal | Git revert file | In git status view |
+| `gc` | Normal | Git commit | In git status view |
+| `gp` | Normal | Git push | In git status view |
+| `gg` | Normal | Git commit and push | In git status view |
+| `oc` | Normal | Order by created | In git status view |
+| `od` | Normal | Order by diagnostics | In git status view |
+| `om` | Normal | Order by modified | In git status view |
+| `on` | Normal | Order by name | In git status view |
+| `os` | Normal | Order by size | In git status view |
+| `ot` | Normal | Order by type | In git status view |
 
 ## 📁 Project Structure
 
