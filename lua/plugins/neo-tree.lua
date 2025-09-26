@@ -1,6 +1,6 @@
 return {
   'nvim-neo-tree/neo-tree.nvim',
-  event = 'VeryLazy',
+  event = 'VimEnter',
   branch = 'v3.x',
   dependencies = {
     'nvim-lua/plenary.nvim',
@@ -315,5 +315,11 @@ return {
     }
 
     vim.cmd [[nnoremap \ :Neotree reveal<cr>]]
+
+    -- Auto-open Neo-tree on startup
+    -- Use a simple approach that works reliably
+    vim.defer_fn(function()
+        vim.cmd(':Neotree position=left')
+    end, 500) -- Wait 500ms to ensure everything is loaded
   end,
 }

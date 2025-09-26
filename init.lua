@@ -30,9 +30,9 @@ require('lazy').setup({
     require(themes[env_var_nvim_theme]),
     require 'plugins.telescope',
     require 'plugins.treesitter',
-    require 'plugins.lsp',
+    -- require 'plugins.lsp',
     require 'plugins.autocompletion',
-    require 'plugins.none-ls',
+    -- require 'plugins.none-ls',
     require 'plugins.lualine',
     require 'plugins.bufferline',
     require 'plugins.neo-tree',
@@ -92,5 +92,6 @@ if file_exists(session_file) then
     -- Source the session file
     vim.cmd('source' .. session_file)
 end
+
 -- The line beneath this is called 'modeline'. See ':help modeline'
 -- vim: ts=2 sts=2 sw=2 et
