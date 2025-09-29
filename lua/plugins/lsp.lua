@@ -105,108 +105,9 @@ return { -- LSP Configuration & Plugins
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
-    -- Enable the following language servers
-    local servers = {
-      lua_ls = {
-        -- cmd = {...},
-        -- filetypes { ...},
-        -- capabilities = {},
-        settings = {
-          Lua = {
-            runtime = { version = 'LuaJIT' },
-            workspace = {
-              checkThirdParty = false,
-              -- Tells lua_ls where to find all the Lua files that you have loaded
-              -- for your neovim configuration.
-              library = {
-                '${3rd}/luv/library',
-                unpack(vim.api.nvim_get_runtime_file('', true)),
-              },
-              -- If lua_ls is really slow on your computer, you can try this instead:
-              -- library = { vim.env.VIMRUNTIME },
-            },
-            completion = {
-              callSnippet = 'Replace',
-            },
-            telemetry = { enable = false },
-            diagnostics = { disable = { 'missing-fields' } },
-          },
-        },
-      },
-      pylsp = {
-        settings = {
-          pylsp = {
-            plugins = {
-              pyflakes = { enabled = false },
-              pycodestyle = { enabled = false },
-              autopep8 = { enabled = false },
-              yapf = { enabled = false },
-              mccabe = { enabled = false },
-              pylsp_mypy = { enabled = false },
-              pylsp_black = { enabled = false },
-              pylsp_isort = { enabled = false },
-            },
-          },
-        },
-      },
-      -- basedpyright = {
-      --   -- Config options: https://github.com/DetachHead/basedpyright/blob/main/docs/settings.md
-      --   settings = {
-      --     basedpyright = {
-      --       disableOrganizeImports = true, -- Using Ruff's import organizer
-      --       disableLanguageServices = false,
-      --       analysis = {
-      --         ignore = { '*' },                 -- Ignore all files for analysis to exclusively use Ruff for linting
-      --         typeCheckingMode = 'off',
-      --         diagnosticMode = 'openFilesOnly', -- Only analyze open files
-      --         useLibraryCodeForTypes = true,
-      --         autoImportCompletions = true,     -- whether pyright offers auto-import completions
-      --       },
-      --     },
-      --   },
-      -- },
-      ruff = {
-        -- Notes on code actions: https://github.com/astral-sh/ruff-lsp/issues/119#issuecomment-1595628355
-        -- Get isort like behavior: https://github.com/astral-sh/ruff/issues/8926#issuecomment-1834048218
-        commands = {
-          RuffAutofix = {
-            function()
-              vim.lsp.buf.execute_command {
-                command = 'ruff.applyAutofix',
-                arguments = {
-                  { uri = vim.uri_from_bufnr(0) },
-                },
-              }
-            end,
-            description = 'Ruff: Fix all auto-fixable problems',
-          },
-          RuffOrganizeImports = {
-            function()
-              vim.lsp.buf.execute_command {
-                command = 'ruff.applyOrganizeImports',
-                arguments = {
-                  { uri = vim.uri_from_bufnr(0) },
-                },
-              }
-            end,
-            description = 'Ruff: Format imports',
-          },
-        },
-      },
-      jsonls = {},
-      sqlls = {},
-      terraformls = {},
-      yamlls = {},
-      bashls = {},
-      dockerls = {},
-      docker_compose_language_service = {},
-      -- tailwindcss = {},
-      -- graphql = {},
-      -- html = { filetypes = { 'html', 'twig', 'hbs' } },
-      -- cssls = {},
-      -- ltex = {},
-      -- texlab = {},
-    }
+    -- Load language servers from modular configuration files
+    local lsp_config = require('core.lsp')
+    local servers = lsp_config.get_servers()
 
     -- Ensure the servers and tools above are installed
     require('mason').setup()
@@ -214,9 +115,8 @@ return { -- LSP Configuration & Plugins
     -- You can add other tools here that you want Mason to install
     -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, {
-      'stylua', -- Used to format lua code
-    })
+    local additional_tools = lsp_config.get_additional_tools()
+    vim.list_extend(ensure_installed, additional_tools)
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
     require('mason-lspconfig').setup {
