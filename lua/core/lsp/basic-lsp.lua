@@ -14,7 +14,10 @@ return {
   bashls = {},
   
   -- Database
-  sqlls = {},
+  sqlls = {}, -- SQL language server (supports MySQL, PostgreSQL, etc.)
+  
+  -- Web Development
+  phpactor = {}, -- PHP language server
   
   -- Uncomment as needed:
   -- html = { filetypes = { 'html', 'twig', 'hbs' } },

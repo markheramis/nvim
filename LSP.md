@@ -10,6 +10,7 @@ This Neovim configuration includes the following language servers:
 - **lua_ls** - Official Lua language server with Neovim-specific configuration
 - **pylsp** - Python LSP Server with disabled plugins (using Ruff instead)
 - **ruff** - Fast Python linter and formatter with custom commands
+- **rust_analyzer** - Rust language server with advanced features and inlay hints
 
 ### Basic Language Servers
 - **jsonls** - JSON language server
@@ -18,7 +19,8 @@ This Neovim configuration includes the following language servers:
 - **dockerls** - Docker language server
 - **docker_compose_language_service** - Docker Compose language server
 - **bashls** - Bash language server
-- **sqlls** - SQL language server
+- **sqlls** - SQL language server (supports MySQL, PostgreSQL, SQLite, etc.)
+- **phpactor** - PHP language server
 
 ### Additional Tools
 - **stylua** - Lua code formatter (installed via Mason)
@@ -39,6 +41,7 @@ lua/core/lsp/
 ├── init.lua              # Auto-discovery loader
 ├── lua-lsp.lua           # Lua language server
 ├── python-lsp.lua        # Python servers (pylsp + ruff)
+├── rust-lsp.lua          # Rust language server (rust_analyzer)
 └── basic-lsp.lua         # All simple servers
 ```
 
@@ -576,6 +579,7 @@ return {
 | Go | `gopls` | Go language server |
 | C/C++ | `clangd` | C/C++ language server |
 | Bash | `bashls` | Bash language server |
+| PHP | `phpactor` | PHP language server |
 | Docker | `dockerls` | Docker language server |
 | Terraform | `terraformls` | Terraform language server |
 | SQL | `sqlls` | SQL language server |
