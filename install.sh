@@ -4,11 +4,5 @@ if [ -d ~/.config/nvim ]; then
     mv ~/.config/nvim ~/.config/nvim.bak
 fi
 
-# Create a new Neovim config directory
-mkdir ~/.config/nvim
 
-# Create a symbolic link for init.lua in the Neovim config directory
-ln -s $(pwd)/init.lua ~/.config/nvim/init.lua
-
-# Create a symbolic link for the lua directory in the Neovim config directory
-ln -s $(pwd)/lua ~/.config/nvim/lua
+ln -s $(pwd) ~/.config/nvim
