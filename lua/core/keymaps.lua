@@ -1,5 +1,30 @@
 -- Keymaps for better default experience
 
+--[[
+vim.keymap.set({mode}, {lhs}, {rhs}, {opts})
+
+Parameters:
+  mode: string or table
+    - The mode(s) in which the keymap will be active (e.g., 'n' for normal, 'i' for insert, 'v' for visual, etc.).
+    - Can be a single mode as a string or multiple modes as a table, e.g., {'n', 'v'}.
+
+  lhs: string
+    - The left-hand side key sequence to map (the key(s) you press).
+
+  rhs: string or function
+    - The right-hand side action to execute (the command, string, or Lua function to run).
+
+  opts: table (optional)
+    - Additional options for the keymap, such as:
+      - noremap: boolean (default true) - non-recursive mapping.
+      - silent: boolean (default false) - do not show command in command-line.
+      - expr: boolean (default false) - treat rhs as an expression.
+      - desc: string - description for the keymap (useful for plugins like which-key).
+      - nowait: boolean - do not wait for more key sequences.
+      - unique: boolean - do not override existing mapping.
+      - buffer: number or boolean - buffer-local mapping (true for current buffer, or buffer number).
+]]
+
 -- Set leader key
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
