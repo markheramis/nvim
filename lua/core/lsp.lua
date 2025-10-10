@@ -15,7 +15,7 @@ end
 -- If not, notify the user with a warning.
 -- Handles missing or malformed config gracefully.
 -- @param config table: LSP configuration table, expected to have 'cmd', 'url', and 'name' fields.
-function check_lsp(config)
+function enable_lsp(config)
   local cmd = config.cmd
   local url = config.url or "No URL provided"
   if vim.fn.executable(cmd[1]) == 1 then
@@ -30,4 +30,14 @@ end
 
 autoload_lsp()
 
-check_lsp(vim.lsp.config['lua_ls'])
+enable_lsp(vim.lsp.config['marksman'])
+enable_lsp(vim.lsp.config['luals'])
+enable_lsp(vim.lsp.config['bashls'])
+enable_lsp(vim.lsp.config['clangd'])
+enable_lsp(vim.lsp.config['htmlls'])
+enable_lsp(vim.lsp.config['jsonls'])
+enable_lsp(vim.lsp.config['phpactor'])
+enable_lsp(vim.lsp.config['pyls'])
+enable_lsp(vim.lsp.config['tsls'])
+enable_lsp(vim.lsp.config['zls'])
+enable_lsp(vim.lsp.config['rustanalyzer'])
