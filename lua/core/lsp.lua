@@ -30,14 +30,20 @@ end
 
 autoload_lsp()
 
-enable_lsp(vim.lsp.config['marksman'])
-enable_lsp(vim.lsp.config['luals'])
+-- enable_lsp(vim.lsp.config['marksman'])
 enable_lsp(vim.lsp.config['bashls'])
+enable_lsp(vim.lsp.config['luals'])
+
 enable_lsp(vim.lsp.config['clangd'])
+
+-- todo: markdown via vscode-langservers-extracted
 enable_lsp(vim.lsp.config['htmlls'])
 enable_lsp(vim.lsp.config['jsonls'])
+-- todo: css via vscode-langservers-extracted
+
 enable_lsp(vim.lsp.config['phpactor'])
 enable_lsp(vim.lsp.config['pyls'])
 enable_lsp(vim.lsp.config['tsls'])
+
 enable_lsp(vim.lsp.config['zls'])
 enable_lsp(vim.lsp.config['rustanalyzer'])

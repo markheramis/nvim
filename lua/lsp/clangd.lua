@@ -3,7 +3,7 @@ vim.lsp.config['clangd'] = {
 		"clangd",
 		"--fallback-style={BasedOnStyle: LLVM, IndentWidth: 4, TabWidth: 4, UseTab: Never}",
 	},
-    url = 'https://clangd.llvm.org/installation',
+	url = 'https://clangd.llvm.org/installation',
 	filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 	root_markers = {
 		".clangd",
