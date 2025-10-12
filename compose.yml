@@ -1,0 +1,19 @@
+services:
+  # arch-nvim:
+  #   build:
+  #     context: .
+  #     dockerfile: .docker/Arch.Dockerfile
+  #   container_name: arch-nvim
+  #   stdin_open: true
+  #   tty: true
+  #   volumes:
+  #     - ~/.config/nvim:/root/.config/nvim
+  ubuntu-nvim:
+    build:
+      context: .
+      dockerfile: .docker/Ubuntu.Dockerfile
+    container_name: ubuntu-nvim
+    stdin_open: true
+    tty: true
+    volumes:
+      - ~/.config/nvim:/root/.config/nvim
